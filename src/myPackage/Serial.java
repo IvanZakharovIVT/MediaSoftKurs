@@ -70,14 +70,10 @@ public class Serial implements Imyinterf, Iinsert{
 		}
 	}
 }
-class cmp implements Comparator<Serial>{
+class Cmp implements Comparator<Serial>{
 	@Override
 	public int compare(Serial arg0, Serial arg1) {
 		// TODO Auto-generated method stub
 		return arg0.yearStart - arg1.yearStart;
 	}
-}
-interface Operator
-{  
-   int apply(int a, int b);
 }

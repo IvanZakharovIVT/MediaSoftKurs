@@ -36,8 +36,9 @@ public class myClass {
         } catch (Exception e) { e.printStackTrace(); }
 		List<Serial> sl = new LinkedList<Serial>();
 		String S = "";
-		File file1 = new File("C:\\Users\\User\\source\\fly\\4c\\KursWork1.txt");
+		File file1 = new File("C:\\Users\\User\\workspace\\Project1\\KursWork1.txt");
 		S = FileRead(file1);
+		S.trim();
 		String []st = S.split("\n");
 		for (String t: st) {
 			t = t.trim();
@@ -53,10 +54,11 @@ public class myClass {
 			drtr = drtr.trim();
 			sl.add(new Serial(ids, name, ys, ye, numb, drtr, idr));
 		}
-		sl.get(4).getAge();
-		sl.get(3).getName();
-		file1 = new File("C:\\Users\\User\\source\\fly\\4c\\KursWork2.txt");
+		System.out.println(sl.get(1).getAge());
+		System.out.println(sl.get(0).getName());
+		file1 = new File("C:\\Users\\User\\workspace\\Project1\\KursWork2.txt");
 		S = FileRead(file1);
+		S.trim();
 		String []sm = S.split("\n");
 		for (String t: sm) {
 			t = t.trim();
@@ -71,12 +73,14 @@ public class myClass {
 			drtr = drtr.trim();
 			mv.add(new Movie(idm, name, year, idr, drtr, rait));
 		}
-		((Movie) mv.get(0)).getName();
-		mv.get(4).getAge();
+		System.out.println(((Movie) mv.get(0)).getName());
+		System.out.println((mv.get(1).getAge()));
 		Movie movchek;
-		movchek = mv.get(3);
-		movchek.getAge();
-		Collections.sort(sl, (sl1, sl2)->sl1.yearStart - sl2.yearStart);
+		movchek = mv.get(1);
+		System.out.println(movchek.getName());
+		Collections.sort(mv, (m1, m2)->(int)(m1.rating*10 - m2.rating*10));
+		Cmp cmp = new Cmp();
+		Collections.sort(sl, cmp);
 		try {
 			Class.forName("org.postgresql.Driver");
 			Connection con = DriverManager.getConnection(url, login, password);
